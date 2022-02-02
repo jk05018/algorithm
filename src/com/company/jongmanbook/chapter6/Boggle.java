@@ -28,9 +28,9 @@ public class Boggle {
 		}
 
 		int n = Integer.parseInt(br.readLine());
-		for(int l=0; l<n ; ++l){
+		for (int l = 0; l < n; ++l) {
 			String word = br.readLine();
-			bw.write(check(matrix,word) + "\n");
+			bw.write(check(matrix, word) + "\n");
 		}
 
 		bw.flush();
@@ -56,7 +56,7 @@ public class Boggle {
 			return false;
 		if (word.length() == 1)
 			return true;
-		for(int i=0; i<to_x.length ; ++i){
+		for (int i = 0; i < to_x.length; ++i) {
 			if (hasWord(x + to_x[i], y + to_y[i], word.substring(1), matrix)) {
 				return true;
 			}

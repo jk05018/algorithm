@@ -16,19 +16,19 @@ public class RmDuplicate {
 
 	public int removeDuplicates(int[] nums) {
 		int i = 0, j = 0;
-		while(++j < nums.length){
-			if(nums[i] < nums[j]){
+		while (++j < nums.length) {
+			if (nums[i] < nums[j]) {
 				nums[++i] = nums[j];
 			}
 		}
-		for(int index = i + 1 ; index < nums.length ; ++index){
+		for (int index = i + 1; index < nums.length; ++index) {
 			nums[index] = DELETE_VALUE;
 		}
 
 		int k = 0;
 
-		for(int value : nums){
-			if(value == DELETE_VALUE){
+		for (int value : nums) {
+			if (value == DELETE_VALUE) {
 				break;
 			}
 			++k;

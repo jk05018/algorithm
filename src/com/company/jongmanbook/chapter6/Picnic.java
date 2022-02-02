@@ -10,18 +10,18 @@ import java.util.Scanner;
 
 public class Picnic {
 	static boolean[][] areFriends;
+
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 
 		int test = sc.nextInt();
-		for(int i=0; i<test ; ++i){
+		for (int i = 0; i < test; ++i) {
 			int n = sc.nextInt();
 			int m = sc.nextInt();
 
 			areFriends = new boolean[n][n];
 
-
-			for(int j = 0; j<m ; ++j){
+			for (int j = 0; j < m; ++j) {
 				areFriends[sc.nextInt()][sc.nextInt()] = true;
 			}
 
@@ -30,19 +30,20 @@ public class Picnic {
 		}
 	}
 
-	public static int countingPairing(boolean[] taken){
+	public static int countingPairing(boolean[] taken) {
 		int non_match = -1;
-		for(int i=0; i<taken.length ; ++i){
-			if(!taken[i]) {
+		for (int i = 0; i < taken.length; ++i) {
+			if (!taken[i]) {
 				non_match = i;
 				break;
 			}
 		}
-		if(non_match == -1) return 1;
+		if (non_match == -1)
+			return 1;
 
 		int ret = 0;
-		for(int i = non_match + 1; i<taken.length ; ++i){
-			if(areFriends[non_match][i] && !taken[i]){
+		for (int i = non_match + 1; i < taken.length; ++i) {
+			if (areFriends[non_match][i] && !taken[i]) {
 				taken[non_match] = true;
 				taken[i] = true;
 				ret += countingPairing(taken);
