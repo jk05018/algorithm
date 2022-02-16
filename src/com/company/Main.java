@@ -3,36 +3,25 @@ package com.company;
 import java.util.*;
 
 public class Main {
+
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		String input = sc.next();
-		char ch = sc.next().charAt(0);
+		int n = sc.nextInt();
+		String vote = sc.next();
 
-		int[] left = new int[input.length()];
-		int[] right = new int[input.length()];
+		HashMap<Character, Integer> map = new HashMap<>();
+		for(char ch : vote.toCharArray()){
+			map.put(ch,map.getOrDefault(ch,0) + 1);
+		}
 
-		int count = 0;
-		for (int i = 0; i < input.length(); ++i) {
-			if (input.charAt(i) == ch) {
-				count = 0;
-				left[i] = count;
-			} else {
-				left[i] = ++count;
+		int max = Integer.MIN_VALUE, max_char = ' ';
+		for(char ch : map.keySet()){
+			if(max < map.get(ch)){
+				max = map.get(ch);
+				max_char = ch;
 			}
 		}
 
-		for (int i = input.length() - 1; i >= 0; --i) {
-			if (input.charAt(i) == ch) {
-				count = 0;
-				right[i] = count;
-			} else {
-				right[i] = ++count;
-			}
-		}
-
-		for(int i=0; i<input.length() ; ++i){
-			System.out.printf("%d ", Math.min(left[i], right[i]));
-		}
-
+		System.out.println((char)max_char);
 	}
 }
