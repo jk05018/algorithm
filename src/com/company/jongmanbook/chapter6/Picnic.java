@@ -1,11 +1,6 @@
 package com.company.jongmanbook.chapter6;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.Scanner;
 
 public class Picnic {
@@ -30,29 +25,26 @@ public class Picnic {
 		}
 	}
 
-	public static int countingPairing(boolean[] taken) {
-		int non_match = -1;
-		for (int i = 0; i < taken.length; ++i) {
-			if (!taken[i]) {
-				non_match = i;
+	public static int countingPairing(boolean[] taken){
+		int first = -1;
+		for(int i=0; i<taken.length ; ++i){
+			if(!taken[i]) {
+				first = i;
 				break;
 			}
 		}
-		if (non_match == -1)
-			return 1;
-
+		if(first == -1) return 1;
 		int ret = 0;
-		for (int i = non_match + 1; i < taken.length; ++i) {
-			if (areFriends[non_match][i] && !taken[i]) {
-				taken[non_match] = true;
-				taken[i] = true;
+		for(int next = first + 1; next < taken.length ; ++next){
+			if(!taken[next] && areFriends[first][next]){
+				taken[next] = taken[first] = true;
 				ret += countingPairing(taken);
-
-				taken[non_match] = false;
-				taken[i] = false;
+				taken[next] = taken[first] = false;
 			}
 		}
 
 		return ret;
+
 	}
+
 }
