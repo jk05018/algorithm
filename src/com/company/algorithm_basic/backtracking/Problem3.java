@@ -1,6 +1,9 @@
 package com.company.algorithm_basic.backtracking;
 
 import java.util.Arrays;
+import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class Problem3 {
 
@@ -11,6 +14,7 @@ public class Problem3 {
 			{1, 2}, {1, 3}, {1, 4}, {1,5}
 		};
 
+		IntStream stream = Arrays.stream(passengers);
 		// int n = 4;
 		// int[] passengers = new int[] {2, 1, 2, 2};
 		// int[][] train = new int[][] {
