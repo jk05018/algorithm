@@ -25,18 +25,19 @@ public class Picnic {
 		}
 	}
 
-	public static int countingPairing(boolean[] taken){
+	public static int countingPairing(boolean[] taken) {
 		int first = -1;
-		for(int i=0; i<taken.length ; ++i){
-			if(!taken[i]) {
+		for (int i = 0; i < taken.length; ++i) {
+			if (!taken[i]) {
 				first = i;
 				break;
 			}
 		}
-		if(first == -1) return 1;
+		if (first == -1)
+			return 1;
 		int ret = 0;
-		for(int next = first + 1; next < taken.length ; ++next){
-			if(!taken[next] && areFriends[first][next]){
+		for (int next = first + 1; next < taken.length; ++next) {
+			if (!taken[next] && areFriends[first][next]) {
 				taken[next] = taken[first] = true;
 				ret += countingPairing(taken);
 				taken[next] = taken[first] = false;
