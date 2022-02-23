@@ -20,17 +20,19 @@ public class TrianglePath {
 				}
 			}
 
-			System.out.println(maxPath(0,0));
+			System.out.println(maxPath(0, 0));
 		}
 	}
 
-	public static int maxPath(int x, int y){
+	public static int maxPath(int x, int y) {
 		if (x < 0 || y < 0 || x >= matrix.length || y >= matrix[0].length) {
 			return Integer.MIN_VALUE;
 		}
-		if(cache[x][y] != -1) return cache[x][y];
-		if(x == matrix.length - 1) return matrix[x][y];
-		return cache[x][y] = Math.max(maxPath(x+1,y+1),maxPath(x+1,y)) + matrix[x][y];
+		if (cache[x][y] != -1)
+			return cache[x][y];
+		if (x == matrix.length - 1)
+			return matrix[x][y];
+		return cache[x][y] = Math.max(maxPath(x + 1, y + 1), maxPath(x + 1, y)) + matrix[x][y];
 	}
 
 	public static void initCache() {
