@@ -1,4 +1,4 @@
-package com.company.jongmanbook.chapter7;
+package com.company.jongmanbook.chapter7.optimization;
 
 import java.util.Arrays;
 import java.util.Scanner;

@@ -1,4 +1,4 @@
-package com.company.jongmanbook.chapter7;
+package com.company.jongmanbook.chapter7.optimization;
 
 import java.util.Scanner;
 // 아직 풀이 못함
