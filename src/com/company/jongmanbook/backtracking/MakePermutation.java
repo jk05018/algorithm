@@ -1,4 +1,4 @@
-package com.company.jongmanbook.chapter6;
+package com.company.jongmanbook.backtracking;
 
 import java.util.ArrayList;
 import java.util.List;

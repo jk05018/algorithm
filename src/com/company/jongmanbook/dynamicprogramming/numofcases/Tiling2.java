@@ -1,4 +1,4 @@
-package com.company.jongmanbook.chapter7.numofcases;
+package com.company.jongmanbook.dynamicprogramming.numofcases;
 
 import java.util.Arrays;
 import java.util.Scanner;
