@@ -1,4 +1,4 @@
-package com.company;
+package com.company.algorithm_basic.hashtable;
 
 import java.util.*;
 
