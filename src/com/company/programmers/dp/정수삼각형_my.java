@@ -2,7 +2,7 @@ package com.company.programmers.dp;
 
 import java.util.Arrays;
 
-public class 정수삼각형 {
+public class 정수삼각형_my {
 	static int N;
 	static int[][] cache, nums; // 깔끔한 코드를 위한 전역변수 사용
 

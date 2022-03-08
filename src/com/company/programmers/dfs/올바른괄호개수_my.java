@@ -1,6 +1,6 @@
 package com.company.programmers.dfs;
 
-public class 올바른괄호개수 {
+public class 올바른괄호개수_my {
 	public int solution(int n) {
 		return backtracking(n, n);
 	}
