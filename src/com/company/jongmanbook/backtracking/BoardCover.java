@@ -3,6 +3,7 @@ package com.company.jongmanbook.backtracking;
 import java.util.Scanner;
 
 public class BoardCover {
+
 	static int[][][] blocks = {
 		{{0, 0}, {1, 0}, {0, 1}},
 		{{0, 0}, {0, 1}, {1, 1}},

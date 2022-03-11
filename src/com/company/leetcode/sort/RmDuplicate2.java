@@ -2,6 +2,7 @@ package com.company.leetcode.sort;
 
 public class RmDuplicate2 {
 	public static final int DELETED_VALUE = Integer.MIN_VALUE;
+
 	public int removeElement(int[] nums, int val) {
 		int i = 0 , j = nums.length - 1;
 		if(i == j){
