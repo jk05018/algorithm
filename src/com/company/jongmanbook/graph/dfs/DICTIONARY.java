@@ -6,8 +6,9 @@ import java.util.List;
 import java.util.Scanner;
 
 public class DICTIONARY {
-	static List<ArrayList<Integer>> adj;
-	static int[] seen,order;
+	static int[][] adj;
+	static int[] seen;
+	static List<Character> order;
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 
@@ -21,32 +22,57 @@ public class DICTIONARY {
 			}
 
 			makeGraph(words);
+			topologicalSort();
 
-			List<Integer> answer = topologicalSort();
+			order.stream().forEach(ch -> System.out.printf("%c",ch));
+			System.out.println();
 
 		}
 	}
 
 	public static void makeGraph(List<String> words){
-		adj = new ArrayList<>();
+		adj = new int[26][26];
 		for(int i=1; i<words.size() ; ++i){
-			int j = i-1;
-			int len = Math.min(words.get(i).length(), words.get(j).length());
-			for(int k=0; k < len ; ++k){
-				if(words.get(i).charAt(k) != words.get(j).charAt(k)){
-					int a = words.get(j).charAt(k) - 'a';
-					int b = words.get(i).charAt(k) - 'a';
-					adj.get(b).add(a);
+			int len = Math.min(words.get(i-1).length(), words.get(i).length());
+			for(int j=0; j < len ; ++j){
+				if(words.get(i).charAt(j) != words.get(j).charAt(j)){
+					int a = words.get(j).charAt(j) - 'a';
+					int b = words.get(i).charAt(j) - 'a';
+					adj[a][b] = 1;
+					break;
 				}
 			}
 		}
 	}
 
 	public static void dfs(int here){
+		seen[here] = 1;
+
+		for(int next=0; next < 26 ; ++next){
+			if(adj[here][next] == 1 && seen[next] != 1) {
+				dfs(next);
+			}
+		}
+
+		order.add(0,(char)(here + 'a'));
 	}
 
-	public static List<Integer> topologicalSort(){
-		int m = adj.size();
-		return null;
+	public static void topologicalSort(){
+		seen = new int[26];
+		order = new ArrayList<>();
+
+		for(int i=0; i < 26 ; ++i) {
+			if(seen[i] != 1) dfs(i);
+		}
+
+		// 만약 그래프가 DAG가 아니라면 정렬 결과에 역방향 간선이 있다.
+		for(int i=0; i<26 ; ++i){
+			for(int j= i + 1; j < 26 ; ++j){
+				if(adj[order.get(j)-'a'][order.get(i)-'a'] == 1){
+					order = new ArrayList<>();
+					return;
+				}
+			}
+		}
 	}
 }
